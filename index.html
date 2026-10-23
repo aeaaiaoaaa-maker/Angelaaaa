@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <title>Shipping Empire 3D</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game"></div>
+
+<div id="loadingScreen">
+
+    <div class="menu">
+
+        <h1>🚢 SHIPPING EMPIRE</h1>
+
+        <h3>3D SHIP SIMULATOR</h3>
+
+        <p>
+            Become a ship captain, transport cargo,
+            explore islands and earn money.
+        </p>
+
+        <button id="playButton">
+            ▶ PLAY GAME
+        </button>
+
+        <p class="small">
+            Best played in landscape mode
+        </p>
+
+    </div>
+
+</div>
+
+<div id="hud" class="hidden">
+
+    <div class="topBar">
+
+        <div class="stat">
+            💰 $<span id="money">0</span>
+        </div>
+
+        <div class="stat">
+            ⛽ <span id="fuel">100</span>%
+        </div>
+
+        <div class="stat">
+            ❤️ <span id="health">100</span>%
+        </div>
+
+        <div class="stat">
+            🚢 <span id="speed">0</span> kn
+        </div>
+
+    </div>
+
+    <div id="missionBox">
+
+        <strong>📦 CARGO MISSION</strong>
+
+        <div id="missionText">
+            Sail to the destination port.
+        </div>
+
+        <div id="distanceText">
+            Distance: 0 m
+        </div>
+
+    </div>
+
+    <div id="compass">
+        N
+    </div>
+
+    <div id="leftControls">
+
+        <button id="leftButton" class="control">
+            ◀
+        </button>
+
+        <button id="rightButton" class="control">
+            ▶
+        </button>
+
+    </div>
+
+    <div id="rightControls">
+
+        <button id="forwardButton" class="control">
+            ▲
+        </button>
+
+        <button id="reverseButton" class="control">
+            ▼
+        </button>
+
+    </div>
+
+    <div id="bottomHud">
+
+        <button id="cameraButton">
+            📷 CAMERA
+        </button>
+
+        <button id="hornButton">
+            📢 HORN
+        </button>
+
+        <button id="shopButton">
+            ⚙ UPGRADE
+        </button>
+
+    </div>
+
+    <div id="throttleBox">
+
+        <span>ENGINE</span>
+
+        <div class="throttleTrack">
+            <div id="throttleFill"></div>
+        </div>
+
+        <span id="throttleValue">0%</span>
+
+    </div>
+
+</div>
+
+<div id="shop" class="hidden">
+
+    <div class="shopPanel">
+
+        <h2>🚢 SHIP UPGRADES</h2>
+
+        <p>Improve your cargo ship.</p>
+
+        <button id="engineUpgrade">
+            Upgrade Engine - $500
+        </button>
+
+        <button id="fuelUpgrade">
+            Refuel Ship - $100
+        </button>
+
+        <button id="repairUpgrade">
+            Repair Ship - $150
+        </button>
+
+        <button id="closeShop">
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+<div id="notification"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

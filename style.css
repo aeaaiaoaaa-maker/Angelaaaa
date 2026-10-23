@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #071525;
+    font-family: Arial, sans-serif;
+    touch-action: none;
+    user-select: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-weight: bold;
+    touch-action: none;
+}
+
+#game {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* MAIN MENU */
+
+#loadingScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 20, 45, .95),
+            rgba(0, 75, 110, .8)
+        );
+}
+
+.menu {
+    width: min(90%, 450px);
+    padding: 30px;
+    text-align: center;
+    color: white;
+    background: rgba(0, 15, 35, .85);
+    border: 1px solid #25bfff;
+    border-radius: 18px;
+    box-shadow: 0 0 40px #008cff55;
+}
+
+.menu h1 {
+    color: #40d5ff;
+    font-size: clamp(24px, 5vw, 38px);
+    margin-bottom: 12px;
+}
+
+.menu h3 {
+    color: #ffdc72;
+    margin-bottom: 18px;
+}
+
+.menu p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+#playButton {
+    margin-top: 25px;
+    padding: 15px 45px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00bfff, #006eff);
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 5px 20px #008cff66;
+}
+
+.small {
+    margin-top: 15px;
+    opacity: .7;
+}
+
+/* HUD */
+
+#hud {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    color: white;
+}
+
+#hud button {
+    pointer-events: auto;
+}
+
+.topBar {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.stat {
+    background: rgba(0, 20, 40, .8);
+    border: 1px solid #ffffff33;
+    border-radius: 7px;
+    padding: 7px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+#missionBox {
+    position: absolute;
+    top: 50px;
+    left: 12px;
+    width: 210px;
+    padding: 10px;
+    background: rgba(0, 20, 40, .8);
+    border-left: 3px solid #00d5ff;
+    border-radius: 7px;
+    font-size: 12px;
+}
+
+#missionBox strong {
+    color: #ffdc72;
+}
+
+#missionText {
+    margin-top: 7px;
+    line-height: 1.4;
+}
+
+#distanceText {
+    margin-top: 5px;
+    color: #52dfff;
+}
+
+#compass {
+    position: absolute;
+    right: 16px;
+    top: 55px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #ffffffaa;
+    background: rgba(0, 20, 40, .7);
+    color: #ff7777;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/* TOUCH CONTROLS */
+
+#leftControls {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+#rightControls {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control {
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
+    background: rgba(0, 100, 180, .55);
+    border: 2px solid #70dfff;
+    color: white;
+    font-size: 27px;
+    box-shadow: inset 0 0 15px #00bfff44;
+}
+
+.control:active,
+.control.active {
+    background: #00aaff;
+    transform: scale(.94);
+}
+
+#bottomHud {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+#bottomHud button {
+    background: rgba(0, 25, 50, .85);
+    color: white;
+    border: 1px solid #00aaff;
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-size: 11px;
+}
+
+#throttleBox {
+    position: absolute;
+    left: 20px;
+    bottom: 135px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    background: #001c32aa;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.throttleTrack {
+    width: 90px;
+    height: 9px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#throttleFill {
+    height: 100%;
+    width: 0%;
+    background: #00ffbb;
+}
+
+/* SHOP */
+
+#shop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .75);
+}
+
+.shopPanel {
+    width: min(90%, 350px);
+    background: #08223b;
+    border: 2px solid #00bfff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    color: white;
+}
+
+.shopPanel h2 {
+    color: #44d5ff;
+    margin-bottom: 10px;
+}
+
+.shopPanel p {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.shopPanel button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 7px;
+    color: white;
+    background: #006db5;
+}
+
+#closeShop {
+    background: #a72b38;
+}
+
+/* NOTIFICATION */
+
+#notification {
+    position: fixed;
+    z-index: 80;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background: rgba(0, 25, 45, .9);
+    border: 1px solid #00dfff;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+}
+
+#notification.show {
+    opacity: 1;
+}
+
+/* LANDSCAPE MOBILE */
+
+@media (max-height: 500px) {
+
+    .control {
+        width: 57px;
+        height: 57px;
+        font-size: 24px;
+    }
+
+    #leftControls {
+        bottom: 35px;
+    }
+
+    #rightControls {
+        bottom: 28px;
+    }
+
+    #missionBox {
+        top: 45px;
+        width: 180px;
+        font-size: 10px;
+    }
+
+    .stat {
+        padding: 5px 9px;
+        font-size: 11px;
+    }
+
+    #throttleBox {
+        bottom: 108px;
+    }
+
+    #bottomHud {
+        bottom: 5px;
+    }
+
+}
